@@ -1,49 +1,56 @@
+import { useState } from "react";
+
 function Sidebar() {
+  const [collapsed, setCollasped] = useState(false);
+  const [active, setActive] = useState(0);
+
+  const links = [
+    { href: "#", text: "Dashboard", icon: "bi-speedometer2" },
+    { href: "#", text: "Customers", icon: "bi-people" },
+    { href: "#", text: "Meeting", icon: "bi-calendar-event" },
+    { href: "#", text: "Tickets", icon: "bi-ticket-detailed" },
+    { href: "#", text: "Messages", icon: "bi-chat-dots" },
+    { href: "#", text: "Settings", icon: "bi-gear" },
+  ];
+
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 bg-light vh-100">
-      <a href="/" className="d-flex align-items-center link-dark text-decoration-none">
-        <span className="fs-4">BOA</span>
-      </a>
+    <div className="d-flex flex-column flex-shrink-0 p-3 vh-100 bg-dark">
+      <div className="d-flex flex-row justify-content-between">
+        {!collapsed &&
+        <a href="/" className="d-flex text-decoration-none link-light me-3">
+          <span className="fs-4">Ticketing System</span>
+        </a>}
+        <button 
+          type="button" 
+          className="btn btn-secondary bg-dark" 
+          onClick={() => setCollasped(!collapsed)}>
+            <i className={`bi ${collapsed ? "bi-chevron-bar-right" : "bi-chevron-bar-left"}`}></i>
+        </button>
+      </div>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-          <a href="#" className="nav-link active">
-            <i className="bi bi-speedometer2 me-2"></i>
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link link-dark">
-            <i className="bi bi-people me-2"></i>
-            Customers
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link link-dark">
-            <i className="bi bi-calendar-event me-2"></i>
-            Meeting
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link link-dark">
-            <i className="bi bi-ticket-detailed me-2"></i>
-            Tickets
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link link-dark">
-            <i className="bi bi-chat-dots me-2"></i>
-            Messages
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link link-dark">
-            <i className="bi bi-gear me-2"></i>
-            Settings
-          </a>
-        </li>
+        {links.map((link, index) => (
+          <SidebarLink
+            href={link.href}
+            text={link.text}
+            icon={link.icon}
+            collapsed={collapsed}
+            active={index==active}
+          />
+        ))}
       </ul>
     </div>
+  );
+}
+
+function SidebarLink({ href, text, icon, collapsed, active = false }) {
+  return (
+    <li>
+      <a href={href} className={`nav-link link-light ${active && "active"}`}>
+        <i className={`bi ${icon} ${!collapsed && "me-2"}`}></i>
+        {!collapsed && text}
+      </a>
+    </li>
   );
 }
 
