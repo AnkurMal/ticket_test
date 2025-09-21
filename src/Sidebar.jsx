@@ -1,16 +1,16 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Sidebar() {
   const [collapsed, setCollasped] = useState(false);
-  const [active, setActive] = useState(0);
 
   const links = [
-    { href: "#", text: "Dashboard", icon: "bi-speedometer2" },
-    { href: "#", text: "Customers", icon: "bi-people" },
-    { href: "#", text: "Meeting", icon: "bi-calendar-event" },
-    { href: "#", text: "Tickets", icon: "bi-ticket-detailed" },
-    { href: "#", text: "Messages", icon: "bi-chat-dots" },
-    { href: "#", text: "Settings", icon: "bi-gear" },
+    { href: "/", text: "Dashboard", icon: "bi-speedometer2" },
+    { href: "/customers", text: "Customers", icon: "bi-people" },
+    { href: "/meeting", text: "Meeting", icon: "bi-calendar-event" },
+    { href: "/tickets", text: "Tickets", icon: "bi-ticket-detailed" },
+    { href: "/messages", text: "Messages", icon: "bi-chat-dots" },
+    { href: "/settings", text: "Settings", icon: "bi-gear" },
   ];
 
   return (
@@ -31,11 +31,11 @@ function Sidebar() {
       <ul className="nav nav-pills flex-column mb-auto">
         {links.map((link, index) => (
           <SidebarLink
+            key={index}
             href={link.href}
             text={link.text}
             icon={link.icon}
             collapsed={collapsed}
-            active={index==active}
           />
         ))}
       </ul>
@@ -43,13 +43,16 @@ function Sidebar() {
   );
 }
 
-function SidebarLink({ href, text, icon, collapsed, active = false }) {
+function SidebarLink({ href, text, icon, collapsed }) {
+  const location = useLocation();
+  const active = location.pathname === href;
+
   return (
     <li>
-      <a href={href} className={`nav-link link-light ${active && "active"}`}>
+      <Link to={href} className={`nav-link link-light  ${active && "active"}`}>
         <i className={`bi ${icon} ${!collapsed && "me-2"}`}></i>
         {!collapsed && text}
-      </a>
+      </Link>
     </li>
   );
 }
