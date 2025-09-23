@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function Sidebar() {
-  const [collapsed, setCollasped] = useState(false);
+  const [collapsed, setCollasped] = useState(true);
 
   const links = [
     { href: "/", text: "Dashboard", icon: "bi-speedometer2" },
@@ -49,7 +49,7 @@ function SidebarLink({ href, text, icon, collapsed }) {
 
   return (
     <li>
-      <Link to={href} className={`nav-link link-light  ${active && "active"}`}>
+      <Link to={href} className={`nav-link link-light ${active && "active"}`}>
         <i className={`bi ${icon} ${!collapsed && "me-2"}`}></i>
         {!collapsed && text}
       </Link>
