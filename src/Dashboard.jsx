@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Dashboard() {
+function Dashboard({username}) {
   const [active, setActive] = useState(0);
 
   const tickets = [
@@ -22,8 +23,21 @@ function Dashboard() {
             text={ticket.text}>
           </TicketLink>)}
       </ul>
-      <div className="d-flex">
-        <p className="fs-3 fw-semibold p-2">First Ticket</p>
+      <div className="d-flex flex-row flex-grow-1 p-2">
+        <p className="fs-3 fw-semibold">First Ticket</p>
+        {
+          username?
+            <button type="button" class="btn btn-primary align-self-start ms-auto">{username}</button> :
+            <div className="dropdown ms-auto">
+              <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Login / Register 
+              </button>
+              <ul className="dropdown-menu">
+                <li><Link to="/login" className="dropdown-item">Login</Link></li>
+                <li><Link to="/register" className="dropdown-item">Register</Link></li>
+              </ul>
+            </div>
+        }
       </div>
     </div>
   )
