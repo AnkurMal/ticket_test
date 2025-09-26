@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login({onLogin}) {
+function Login({setUsername}) {
 	const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function Login({onLogin}) {
         if (data.success) {
           alert("Registration successful!");
           form.reset();
-          onLogin(username);
+          setUsername(username);
           navigate("/");
         } else {
           alert("Registration failed!");

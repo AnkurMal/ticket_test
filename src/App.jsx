@@ -9,10 +9,6 @@ import { useState } from "react";
 function App() {
   const [username, setUsername] = useState(null);
 
-  const handleLogin = (user) => {
-    setUsername(user);
-  };
-
   return (
     <div className="d-flex">
       <Sidebar />
@@ -20,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard username={username} />} />
           <Route path="/customers" element={<Customers />} />
-          <Route path="/login" element={<Login  onLogin={handleLogin} />} />
+          <Route path="/login" element={<Login  setUsername={setUsername} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
