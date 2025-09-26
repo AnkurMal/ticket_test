@@ -16,15 +16,21 @@ function Sidebar() {
   return (
     <div className="d-flex flex-column flex-shrink-0 p-3 vh-100 bg-dark">
       <div className="d-flex flex-row justify-content-between">
-        {!collapsed &&
-        <a href="/" className="d-flex text-decoration-none link-light me-3">
-          <span className="fs-4">Ticketing System</span>
-        </a>}
-        <button 
-          type="button" 
-          className="btn btn-secondary bg-dark" 
-          onClick={() => setCollasped(!collapsed)}>
-            <i className={`bi ${collapsed ? "bi-chevron-bar-right" : "bi-chevron-bar-left"}`}></i>
+        {!collapsed && (
+          <a href="/" className="d-flex text-decoration-none link-light me-3">
+            <span className="fs-4">Ticketing System</span>
+          </a>
+        )}
+        <button
+          type="button"
+          className="btn btn-secondary bg-dark"
+          onClick={() => setCollasped(!collapsed)}
+        >
+          <i
+            className={`bi ${
+              collapsed ? "bi-chevron-bar-right" : "bi-chevron-bar-left"
+            }`}
+          ></i>
         </button>
       </div>
       <hr />

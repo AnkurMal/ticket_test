@@ -1,7 +1,15 @@
-function Register() {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import LoginInterface from "./LoginInterface";
+
+function Register({ setUsername }) {
   return (
-    <h1>Not done</h1>
-  )
+    <LoginInterface
+      text="Register"
+      loadingText="Registering"
+      setUsername={setUsername}
+    />
+  );
 }
 
-export default Register
+export default Register;
