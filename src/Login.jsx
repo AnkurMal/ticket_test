@@ -1,13 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import LoginInterface from "./LoginInterface";
 
-function Login({ setUsername }) {
+function Login({ setUsername, api }) {
   return (
     <LoginInterface
       text="Login"
       loadingText="Logging"
       setUsername={setUsername}
+      api={api}
     />
   );
 }

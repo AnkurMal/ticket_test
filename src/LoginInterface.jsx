@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function LoginInterface({ text, loadingText, setUsername }) {
+function LoginInterface({ text, loadingText, setUsername, api }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -14,14 +14,11 @@ function LoginInterface({ text, loadingText, setUsername }) {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://api-test-zeno.onrender.com/" + text.toLowerCase(),
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password }),
-        }
-      );
+      const response = await fetch(api + text.toLowerCase(), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
 
       if (response.ok) {
         const data = await response.json();

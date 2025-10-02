@@ -14,7 +14,7 @@ function Sidebar() {
   ];
 
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 vh-100 bg-dark">
+    <div className="d-flex flex-column p-3 bg-dark vh-100">
       <div className="d-flex flex-row justify-content-between">
         {!collapsed && (
           <a href="/" className="d-flex text-decoration-none link-light me-3">
