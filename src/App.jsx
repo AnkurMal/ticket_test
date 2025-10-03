@@ -21,7 +21,7 @@ const Message = {
 function App() {
   const [username, setUsername] = useState(null);
   const [tickets, setTickets] = useState([]);
-  const api = "https://api-test-zeno.onrender.com/";
+  const api = "https://backend-test-n539.onrender.com/";
 
   useEffect(() => {
     const handleExit = () => {
@@ -47,9 +47,9 @@ function App() {
   }, []);
 
   return (
-    <div className="d-flex">
+    <div className="d-flex vh-100">
       <Sidebar />
-      <div className="flex-grow-1">
+      <div className="flex-grow-1 overflow-auto">
         <Routes>
           <Route
             path="/"

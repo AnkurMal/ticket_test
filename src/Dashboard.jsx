@@ -163,7 +163,6 @@ function Dashboard({ username, tickets, setTickets, api, Message }) {
 }
 
 function DisplayMessages({ tickets, setTickets, active, username, Message }) {
-  console.log(tickets);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;

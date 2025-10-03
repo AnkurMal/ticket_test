@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
 function CreateTicket({
-  api,
-  username,
-  tickets,
-  setTickets,
-  priority,
-  sendBy,
-}) {
+                        api,
+                        username,
+                        tickets,
+                        setTickets,
+                        priority,
+                        sendBy,
+                      }) {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -42,38 +42,41 @@ function CreateTicket({
   };
 
   return (
-    <form className="m-3 vh-100 overflow-auto" onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="title" className="form-label">
-          Title
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="title"
-          name="title"
-          aria-describedby="title"
-          required
-        />
-      </div>
+    <div className="h-100 overflow-auto">
+      <form className="m-3" onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">
+            Title
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="title"
+            name="title"
+            aria-describedby="title"
+            required
+          />
+        </div>
 
-      <div className="mb-3">
-        <label htmlFor="description" className="form-label">
-          Description
-        </label>
-        <textarea
-          className="form-control"
-          id="description"
-          name="description"
-          aria-describedby="description"
-          required
-        ></textarea>
-      </div>
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">
+            Description
+          </label>
+          <textarea
+            className="form-control"
+            id="description"
+            name="description"
+            aria-describedby="description"
+            rows="5"
+            required
+          ></textarea>
+        </div>
 
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }
 
